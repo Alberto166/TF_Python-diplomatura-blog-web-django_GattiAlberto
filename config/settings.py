@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
+    'usuarios',
 ]
 
 MIDDLEWARE = [
@@ -120,6 +121,12 @@ STATIC_URL = 'static/'
 # Configuración para archivos multimedia (Imágenes de los posts)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+# Redirecciones de autenticación
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'post_list'
+LOGOUT_REDIRECT_URL = 'post_list'
+
 
 
 

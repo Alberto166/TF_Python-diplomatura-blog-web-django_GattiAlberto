@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.split if hasattr(admin.site, 'split') else admin.site.urls),
-    path('', include('blog.urls')),  # Conecta las URLs de tu blog en la raíz
+    path('', include('blog.urls')),  # Conecta las URLs 
+    path('usuarios/', include('usuarios.urls')),
 ]
 
 # Configuración obligatoria para servir archivos multimedia (imágenes) en desarrollo
