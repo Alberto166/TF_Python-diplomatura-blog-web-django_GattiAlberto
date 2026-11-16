@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <h2 class="mb-4 text-center">Publicaciones Recientes</h2>
+        {% for post in posts %}
+            <div class="card mb-4 shadow-sm">
+                <!-- Validación de imagen requerida para que no rompa el template si falta -->
+                {% if post.imagen %}
+                    <img src="{{ post.imagen.url }}" class="card-img-top" alt="{{ post.titulo }}" style="max-height: 350px; object-fit: cover;">
+                {% endif %}
+                <div class="card-body">
+                    <h3 class="card-title">{{ post.titulo }}</h3>
+                    {% if post.subtitulo %}
+                        <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitulo }}</h6>
+                    {% endif %}
+                    <p class="card-text text-muted small">Por {{ post.autor }} | El {{ post.fecha_creacion|date:"d/m/Y H:i" }}</p>
+                    <p class="card-text">{{ post.contenido|truncatewords:30 }}</p>
+                    <a href="{% url 'post_detail' post.pk %}" class="btn btn-primary btn-sm">Leer más</a>
+                </div>
+            </div>
+        {% empty %}
+            <div class="alert alert-info text-center">No hay publicaciones disponibles todavía.</div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
